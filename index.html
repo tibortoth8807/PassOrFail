@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#14243a" />
+    <title>Vizsgabiztos – átmegy vagy bukta?</title>
+    <meta name="description" content="Te vagy a vizsgabiztos: szúrd ki, mi a turpisság a műszaki vizsgára érkező autókon. 10 szint, magyarul, angolul és németül." />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <h1><span data-i18n="title"></span> <span class="sub" data-i18n="subtitle"></span></h1>
+        <div class="topbar-right">
+          <button type="button" class="chip-btn" id="btn-handbook" data-i18n="handbook"></button>
+          <div class="langs" role="group" aria-label="Language">
+            <button type="button" class="lang-btn" data-lang="hu">HU</button><button type="button" class="lang-btn" data-lang="en">EN</button><button type="button" class="lang-btn" data-lang="de">DE</button>
+          </div>
+          <button type="button" class="icon-btn" id="btn-sound">🔊</button>
+        </div>
+      </header>
+
+      <div class="stage">
+        <canvas id="game" aria-label="Vizsgacsarnok"></canvas>
+        <div class="hud">
+          <span id="hud-level"></span><span id="hud-car"></span><span id="hud-score"></span>
+        </div>
+        <div class="owner" id="owner"></div>
+        <div class="stamp" id="stamp"></div>
+      </div>
+
+      <section class="desk">
+        <div class="papers">
+          <h3 data-i18n="papersTitle"></h3>
+          <dl id="papers"></dl>
+        </div>
+        <div class="tools">
+          <div class="stations" id="stations"></div>
+          <div class="front">
+            <small data-i18n="frontView"></small>
+            <canvas id="front" width="240" height="150"></canvas>
+          </div>
+        </div>
+        <div class="report">
+          <h3 data-i18n="protocol"></h3>
+          <ul id="protocol"></ul>
+          <div class="verdict">
+            <button type="button" class="btn-pass" id="btn-pass"></button>
+            <button type="button" class="btn-fail" id="btn-fail"></button>
+          </div>
+        </div>
+      </section>
+      <footer class="footer" data-i18n="footer"></footer>
+    </div>
+
+    <div class="overlay" id="title-screen">
+      <div class="card">
+        <div class="langs card-langs" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-lang="hu">Magyar</button><button type="button" class="lang-btn" data-lang="en">English</button><button type="button" class="lang-btn" data-lang="de">Deutsch</button>
+        </div>
+        <div class="card-art">🚗🔍📋</div>
+        <h2 data-i18n="docTitle"></h2>
+        <p data-i18n="intro"></p>
+        <p class="rules" data-i18n="rules"></p>
+        <p class="label" data-i18n="pickLevel"></p>
+        <div class="levels" id="levels"></div>
+        <div class="card-actions">
+          <button type="button" class="btn primary" id="btn-start" data-i18n="start"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay hidden" id="reason-screen">
+      <div class="card">
+        <h2 data-i18n="pickReason"></h2>
+        <div class="reasons" id="reasons"></div>
+        <div class="card-actions"><button type="button" class="btn" id="btn-reason-cancel" data-i18n="cancel"></button></div>
+      </div>
+    </div>
+
+    <div class="overlay hidden" id="feedback-screen">
+      <div class="card">
+        <div class="verdict-icon" id="fb-icon"></div>
+        <h2 id="fb-title"></h2>
+        <div class="fb-body" id="fb-body"></div>
+        <div class="card-actions"><button type="button" class="btn primary" id="btn-next-car" data-i18n="nextCar"></button></div>
+      </div>
+    </div>
+
+    <div class="overlay hidden" id="level-screen">
+      <div class="card">
+        <div class="card-art" id="lv-art"></div>
+        <h2 id="lv-title"></h2>
+        <p id="lv-text"></p>
+        <pre class="share hidden" id="share-text"></pre>
+        <div class="card-actions" id="lv-actions"></div>
+      </div>
+    </div>
+
+    <div class="overlay hidden" id="handbook-screen">
+      <div class="card">
+        <h2 data-i18n="handbook"></h2>
+        <ul class="handbook" id="handbook"></ul>
+        <div class="card-actions"><button type="button" class="btn primary" id="btn-handbook-close" data-i18n="close"></button></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
